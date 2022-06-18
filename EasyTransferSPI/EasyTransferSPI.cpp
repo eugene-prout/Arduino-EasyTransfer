@@ -65,7 +65,7 @@ boolean EasyTransferSPI::messageAvailable()
   return !messages_received.empty();
 }
 
-uint8_t EasyTransferSPI::*getEarliestMessage()
+uint8_t EasyTransferSPI::getEarliestMessage()
 {
   if (messages_received.empty()) {
     return NULL;
