@@ -49,6 +49,7 @@ public:
 
 private:
     SPI *_spi; 
+    SPISettings _spi_settings;
     uint8_t *address;     // address of struct
     uint8_t size;         // size of struct
     uint8_t *rx_buffer;   // address for temporary storage and parsing buffer
