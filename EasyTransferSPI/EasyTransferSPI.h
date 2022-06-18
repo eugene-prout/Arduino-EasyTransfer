@@ -36,7 +36,7 @@ GNU General Public License for more details.
 #include "SPI.h"
 #include <queue>
 
-class EasyTransfer
+class EasyTransferSPI
 {
 public:
     void beginMaster(uint8_t * structPtr, uint8_t structSize, SPI *theSPI);
