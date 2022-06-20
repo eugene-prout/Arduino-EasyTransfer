@@ -33,32 +33,31 @@ GNU General Public License for more details.
 #else
 #include "WProgram.h"
 #endif
-#include "SPI.h"
-#include <queue>
+
+#include <SPI.h>
+#include "CircularQueue.h"
 
 class EasyTransferSPI
 {
 public:
-    void beginMaster(uint8_t * structPtr, uint8_t structSize, SPI *theSPI);
-    void beginMaster(uint8_t * structPtr, uint8_t structSize, SPI *theSPI, SPISettings customSettings);
-    void beginSlave(uint8_t * structPtr, uint8_t structSize, SPI *theSPI);
+    void beginMaster(uint8_t * structPtr, uint8_t structSize, SPIClass *theSPI);
+    void beginMaster(uint8_t * structPtr, uint8_t structSize, SPIClass *theSPI, SPISettings customSettings);
+    void beginSlave(uint8_t * structPtr, uint8_t structSize, SPIClass *theSPI);
 
     void sendData();
     bool messageAvailable();
     uint8_t * getEarliestMessage();
 
 private:
-    SPI *_spi; 
-    SPISettings _spi_settings;
-    uint8_t *address;     // address of struct
-    uint8_t size;         // size of struct
-    uint8_t *rx_buffer;   // address for temporary storage and parsing buffer
-    uint8_t rx_buffer_idx; // index for RX parsing buffer
-    uint8_t rx_len;       // RX packet length according to the packet
+    /* SPIClass *_spi; */ 
+    /* SPISettings _spi_settings; */
+    /* uint8_t *address;     // address of struct */
+    /* uint8_t size;         // size of struct */
+    /* uint8_t *rx_buffer;   // address for temporary storage and parsing buffer */
+    /* uint8_t rx_buffer_idx; // index for RX parsing buffer */
+    /* uint8_t rx_len;       // RX packet length according to the packet */
 
-    queue<uint8_t *> messages_received; // data structure to store fully read messages
-
-
+    /* queue<uint8_t *> messages_received; // data structure to store fully read messages */
 };
 
 #endif

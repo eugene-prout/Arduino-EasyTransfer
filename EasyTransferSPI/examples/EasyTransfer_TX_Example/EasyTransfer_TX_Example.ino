@@ -13,14 +13,15 @@ struct SPIDATA {
 //give a name to the group of data
 SPIDATA mydata;
 
-void setup(){
-  ET.begin(details(mydata), &SPI);
+void setup() {
+  Serial.begin(9600);
+  ET.beginMaster(details(mydata), &SPI);
   
 }
 
-void loop(){
+void loop() {
   mydata.data1 = 10;
-  mydata.data2 = random(5);
+  mydata.data2 = 5;
   //send the data
   ET.sendData();
   delay(5000);
