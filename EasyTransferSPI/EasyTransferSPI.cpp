@@ -82,11 +82,7 @@ boolean EasyTransferSPI::messageAvailable()
   return !messages_received.isEmpty();
 }
 
-<<<<<<< HEAD
 uint8_t* EasyTransferSPI::getEarliestMessage()
-=======
-uint8_t EasyTransferSPI::getEarliestMessage()
->>>>>>> 56667660b117e8dea33c557bd91b418d0a7ac5c4
 {
   if (messages_received.isEmpty()) {
     return NULL;
