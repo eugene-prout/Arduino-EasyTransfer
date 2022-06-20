@@ -40,8 +40,7 @@ GNU General Public License for more details.
 class EasyTransferSPI
 {
 public:
-    void beginMaster(uint8_t * structPtr, uint8_t structSize, SPIClass *theSPI);
-    void beginMaster(uint8_t * structPtr, uint8_t structSize, SPIClass *theSPI, SPISettings customSettings);
+    void beginMaster(uint8_t * structPtr, uint8_t structSize, SPIClass *theSPI, SPISettings customSettings=SPISettings(4000000, MSBFIRST, SPI_MODE0));
     void beginSlave(uint8_t * structPtr, uint8_t structSize, SPIClass *theSPI);
 
     void sendData();

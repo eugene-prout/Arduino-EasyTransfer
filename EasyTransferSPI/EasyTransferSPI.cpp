@@ -93,19 +93,8 @@ uint8_t* EasyTransferSPI::getEarliestMessage()
   }
 }
 
-void EasyTransferSPI::beginMaster(uint8_t *structPtr, uint8_t structSize, SPIClass *theSPI)
-{
-    _spi->setClockDivider(SPI_CLOCK_DIV8);
-    address = structPtr;
-    size = structSize;
-    _spi = theSPI;
-    _spi->begin();
-    _spi_settings = SPISettings(4000000, MSBFIRST, SPI_MODE0);
-}
-
 void EasyTransferSPI::beginMaster(uint8_t *structPtr, uint8_t structSize, SPIClass *theSPI, SPISettings customSettings)
 {
-    _spi->setClockDivider(SPI_CLOCK_DIV8);
     address = structPtr;
     size = structSize;
     _spi = theSPI;
@@ -119,7 +108,7 @@ void EasyTransferSPI::sendData()
     uint8_t CS = size;
 
     // Take control of SPI bus
-    _spi->beginTransaction(SPISettings(4000000, MSBFIRST, SPI_MODE0));
+    _spi->beginTransaction(_spi_settings);
     digitalWrite(SS, LOW);  
 
     _spi->transfer(0x06);
