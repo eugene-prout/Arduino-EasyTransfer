@@ -13,7 +13,7 @@ struct SPIDATA {
 //give a name to the group of data
 SPIDATA mydata;
 
-void setup() {
+void setup(){
   Serial.begin(9600);
   ET.beginMaster(details(mydata), &SPI);
   

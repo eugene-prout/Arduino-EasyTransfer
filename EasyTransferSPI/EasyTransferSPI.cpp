@@ -8,6 +8,7 @@ uint8_t *rx_buffer;   // address for temporary storage and parsing buffer
 uint8_t rx_buffer_idx; // index for RX parsing buffer
 uint8_t rx_len;       // RX packet length according to the packet
 uint8_t checksum;
+
 CircularQueue messages_received(100); // data structure to hold fully read messages
 
 void EasyTransferSPI::beginSlave(uint8_t *structPtr, uint8_t structSize, SPIClass *theSPI) 
@@ -27,6 +28,7 @@ void EasyTransferSPI::beginSlave(uint8_t *structPtr, uint8_t structSize, SPIClas
 ISR (SPI_STC_vect)
 {
   uint8_t data = SPDR;
+  Serial.println(data);
   rx_buffer[rx_buffer_idx] = data;
 
   if (rx_buffer_idx == 0) 
@@ -117,7 +119,7 @@ void EasyTransferSPI::sendData()
     uint8_t CS = size;
 
     // Take control of SPI bus
-    /* _spi->beginTransaction(SPISettings(4000000, MSBFIRST, SPI_MODE0)); */
+    _spi->beginTransaction(SPISettings(4000000, MSBFIRST, SPI_MODE0));
     digitalWrite(SS, LOW);  
 
     _spi->transfer(0x06);
