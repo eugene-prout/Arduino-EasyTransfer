@@ -135,5 +135,5 @@ void EasyTransferSPI::sendData()
 
     // Release control of SPI bus
     digitalWrite(SS, HIGH);
-    /* _spi->endTransaction(); */
+    _spi->endTransaction();
 }
