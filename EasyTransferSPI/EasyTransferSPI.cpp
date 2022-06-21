@@ -28,7 +28,6 @@ void EasyTransferSPI::beginSlave(uint8_t *structPtr, uint8_t structSize, SPIClas
 ISR (SPI_STC_vect)
 {
   uint8_t data = SPDR;
-  Serial.println(data);
   rx_buffer[rx_buffer_idx] = data;
 
   if (rx_buffer_idx == 0) 
@@ -93,7 +92,7 @@ uint8_t* EasyTransferSPI::getEarliestMessage()
   }
 }
 
-void EasyTransferSPI::beginMaster(uint8_t *structPtr, uint8_t structSize, SPIClass *theSPI, SPISettings customSettings)
+void EasyTransferSPI::beginMaster(uint8_t *structPtr, uint8_t structSize, SPIClass *theSPI, SPISettings customSettings )
 {
     address = structPtr;
     size = structSize;
